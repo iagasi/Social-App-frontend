@@ -1,0 +1,87 @@
+.login{
+background-color: rgb(233, 241, 241);
+height: 100vh;
+display: flex;
+align-items: center;
+place-content: center;
+
+}
+
+
+.login__wraper{
+display: flex;
+align-items: center;
+}
+
+.login__left{
+
+}
+
+.login__right{
+    background-color: white;
+    display: flex;
+   margin-left: 50px;
+    height: 500px;
+    width: 500px;
+    align-items: center;
+    place-content: center;
+    border-radius: 10px;
+}
+
+.login__box{
+    display: flex;
+    flex-direction: column;
+  
+   height: 100%;
+   width: 90%;
+  place-content: center;
+}
+.login__logo{
+    font-weight: 800;
+    font-size: 50px;
+    color: blue;
+    margin-bottom: 10px;
+}
+.login__description{
+
+}
+.login__right{
+
+}
+
+.login__input{
+    height: 50px;
+    border-radius: 10px;
+    border: 1px solid rgb(218, 218, 226);
+    outline: none;
+    margin-bottom:10px;
+    padding-left: 20px;
+    font-size: 18px;
+}
+
+.login__button{
+    height: 50px;
+    border:none;
+    border-radius: 10px;
+    background-color: rgb(82, 82, 250);
+    color: aliceblue;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.login__registerButton{
+   margin-top: 100px;
+   margin-left: 25%;
+    height: 50px;
+    width: 50%;
+    border:none;
+    border-radius: 10px;
+    background-color: rgb(33, 236, 84);
+    color: aliceblue;
+    font-size: 20px;
+    cursor: pointer;
+}
+.login__forgot{
+    text-align: center;
+    margin-top: 20px;
+}

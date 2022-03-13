@@ -1,0 +1,100 @@
+
+.topbar{
+    top: 0px;
+    position: sticky;
+  
+      width:100vw
+}
+
+
+.topbar__container{
+    height: 50px;
+    width: 100%;
+    background-color: rgb(0, 223, 223);
+    display: flex;
+    align-items: center;
+  
+
+}
+.topbar__left{
+    flex:3
+}
+.topbar__center{
+    flex:4
+}
+.topbar__right{
+    flex:5;
+    display:flex;
+    flex-direction: row;
+}
+.topbar__logo{
+    margin-left: 20px;
+    font-weight: bold;
+    font-size: 24px;
+    cursor: pointer;
+    color: white;
+}
+.topbar__image{
+height: 33px;
+width: 33px;
+border-radius: 50%;
+object-fit: cover;
+cursor: pointer;
+}
+.topbar__icons{
+    display: flex;
+}
+
+.topbar__search{
+    background-color: white;
+    height: 30px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    /* padding-left: 5px; */
+    border-radius: 10px;
+}
+.topbar__search{
+margin-left: 10px;
+}
+.topbar__input{
+width: 70%;
+border: none;
+height: 95%;
+outline: none;
+}
+
+.topbar__right{
+    align-items: center;
+    justify-content: space-around;
+
+    display: flex;
+}
+
+.topbar__links{
+    display: flex;
+    justify-content: space-around;
+    flex:0.3;
+}
+.topbar__icons{
+
+    flex: 0.3;
+    justify-content: space-between;
+}
+.topbar__icon-item{
+  position: relative;
+}
+.topbar__icon-count{
+    position:absolute;
+ top:-5px;
+ left: 15px;
+    background: red;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+  color: white;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+    
+}
