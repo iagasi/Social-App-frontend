@@ -45,7 +45,7 @@ function Sidebar() {
 
 {
 
-  Users.map(user=><CloseFriend  key={user.id} user={user}/>)
+  // Users.map(user=><CloseFriend  key={user.id} user={user}/>)
 }
 
       </div>

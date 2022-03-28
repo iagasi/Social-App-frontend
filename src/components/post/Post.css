@@ -4,19 +4,18 @@
   border-radius: 50%;
 }
 .post {
-    margin-top: 20px;
+  margin-top: 20px;
   padding: 10px;
   box-shadow: -3px 3px 20px -7px rgba(175, 174, 174, 0.66);
 
   width: 100%;
   border-radius: 10px;
-
 }
 
 .post__container {
-display: flex;
-flex-direction: column;
-justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .post__top {
@@ -24,6 +23,7 @@ justify-content: space-between;
   width: 100%;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 
 .post__topLeft {
@@ -31,47 +31,87 @@ justify-content: space-between;
   align-items: center;
 }
 .post__userName {
-    margin-left: 5px;
+  margin-left: 5px;
 }
-.post__date{
-font-size: 10px;
-margin-left: 10px;
+.post__date {
+  font-size: 10px;
+  margin-left: 10px;
 }
 
-.post__center{
+.post__center {
   display: flex;
   flex-direction: column;
   /* height: 500px; */
   overflow: hidden;
 }
-.post__centerImage{
-    height: 100%;
-    overflow: hidden;
-    max-height: 500px;
-    max-width: 600px;
-    object-fit: cover;
+.post__centerImage {
+  height: 100%;
+  overflow: hidden;
+  max-height: 500px;
+  max-width: 600px;
+  object-fit: cover;
 }
 
-.post__heartIcon{
-margin-left: 10px;
-color: red ;
-transform: scale(1.5);
-cursor: pointer;
+.post__heartIcon {
+  margin-left: 10px;
+  color: red;
+  transform: scale(1.5);
+  cursor: pointer;
 }
-.post__bottom{
-    margin-top: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-}
-
-.post__likeCounter{
-margin-left: 20px;
-font-size: 14px;
+.post__bottom {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.post__bootomLeft{
+.post__likeCounter {
+  margin-left: 20px;
+  font-size: 14px;
+}
+
+.post__bootomLeft {
   display: flex;
   flex-direction: row;
+}
+.post__topRight {
+  cursor: pointer;
+}
+
+.post__topRight-Modal {
+  height: 300px;
+  width: 70%;
+  background-color: rgb(192, 191, 191,0.95);
+  position: absolute;
+  top:70px;
+  left: 100px;
+  
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  place-content: center;
+}
+
+.post__topRight-ModalButton {
+  cursor: pointer;
+  height: 40px;
+  width: 150px;
+  color: red;
+  font-size: 18px;
+  border-radius: 8px;
+  border: none;
+  background-color: white;
+  letter-spacing: 1px;
+}
+.post__topRight-ModalClose{
+position: absolute;
+color: rgb(255, 0, 119);
+top:10px;
+right:10px;
+cursor: pointer;
+font-size: 25px;
+}
+.post__commentText{
+  cursor: pointer;
+  
 }

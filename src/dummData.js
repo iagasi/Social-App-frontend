@@ -2,10 +2,10 @@ export const Users=[
 
     {
         id:1,
-        profilePicture:"https://www.designyourway.net/blog/wp-content/uploads/2018/08/387011_3d-cute-wallpapers-for-desktop-hd-1-jpg_1024x768_h-700x525.jpg",
+        profilePicture:"assets/images/2.jpg",
         userName:"Jon doe"
     },
-
+   
     {
         id:2,
         profilePicture:"",
@@ -14,7 +14,29 @@ export const Users=[
 
     {
         id:3,
+        profilePicture:"assets/images/nugzar.jpg",
+        userName:"Nugzar"
+    },
+    {
+        id:4,
         profilePicture:"",
+        userName:"Stiven"
+    },
+    {
+        id:1,
+        profilePicture:"assets/images/2.jpg",
+        userName:"Jon doe"
+    },
+   
+    {
+        id:2,
+        profilePicture:"",
+        userName:"Geork"
+    },
+
+    {
+        id:3,
+        profilePicture:"assets/images/nugzar.jpg",
         userName:"Nugzar"
     },
     {

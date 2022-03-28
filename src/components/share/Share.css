@@ -29,43 +29,55 @@
 .share__option {
   display: flex;
   align-items: center;
-
+  margin-right: 20px;
 }
-.share__bottom{
- 
-    display: flex;
-   
- 
+.share__bottom {
+  display: flex;
 }
 .share__mIcon {
-    margin-right: 5px;
+  margin-right: 5px;
 }
 
-.share__bottom{
-    
-    display: flex;
+.share__bottom {
+  display: flex;
 }
 
-.share__text{
-    font-size: 14px;
-
+.share__text {
+  font-size: 14px;
 }
-.share__button{
-    border: none;
-    border-radius: 5px;
-    padding: 4px;
-    height: 30px;
-   font-weight: bold;
-   cursor: pointer;
-   
+.share__button {
+  border: none;
+  border-radius: 5px;
+  padding: 8px;
+  height: 40px;
+  /* font-weight: bold; */
+  cursor: pointer;
+  color: white;
+  background-color: rgb(154, 156, 152);
 }
-.section__bottom{
- padding: 10px;
-    display:flex;
-    flex-direction: row;
+.section__bottom {
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
 
-    
-    justify-content: space-between;
-    align-content: center;
-    
+  justify-content: space-between;
+  align-items: center;
+}
+
+.share_fileImg{
+  height: 150px;
+  width:150px;
+ position: relative;
+}
+.share__imgCancell{
+position: absolute;
+top:-17px;
+right: -17px;
+z-index: 2;
+cursor: pointer;
+}
+.share_file{
+  position: absolute;
+  margin-left: 50px;
+  border: 1px solid black;
 }

@@ -7,3 +7,7 @@
 .bady{
   height: 100vh;
 }
+
+.NavLink{
+text-decoration: none;
+}

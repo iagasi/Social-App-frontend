@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { NavLink } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
+import { followUser, unfollowUser } from '../../context/AuthAction'
+import { AuthStateValue, UserStateValue } from '../../context/AuthContext'
 import { Users } from '../../dummData'
+import { $followUser, $getUserFriends, $UnFollowUser } from '../../http/user'
 import FriendOnline from './friendOnlain/FriendOnline'
 import "./Rightbar.css"
 
-function Rightbar({ profile }) {
+function Rightbar({ profile, currUser }) {
+  const { user, dispatch } = UserStateValue()
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER
+
+
   const HomeRightbAr = () => {
     return (
       <>
@@ -15,15 +24,49 @@ function Rightbar({ profile }) {
 
           <img className='rightbar__advertImg' src="https://wallpaperaccess.com/full/1209562.jpg" alt="" />
         </div>
-        {Users.map(user => <FriendOnline key={user.id} user={user} />)}
+        {/* {Users.map(user => <FriendOnline key={user?.id} user={user} />)} */}
       </>
     )
 
   }
 
   const ProfileRightbar = () => {
+    const [follow, setFollow] = useState()
+
+    const [friends, setFriends] = useState()
+    const { id } = useParams()
+    useEffect(async () => {
+      const friends = await $getUserFriends(id)
+      setFriends(friends)
+    }, [id])
+
+    useEffect(() => {
+      if (user?.followers?.includes(id)) { setFollow("Delete Friend") }
+      else { setFollow("Add To Friends") }
+    }, [id])
+
+    const followHandler = async () => {
+      if (follow == "Delete Friend") {
+        console.log(user._id);
+        const res = await $UnFollowUser(id, user._id)
+        dispatch(unfollowUser(id))
+        setFollow("Add To Friends")
+      }
+
+      else {
+        console.log(user._id)
+        const res = await $followUser(id, user._id)
+        dispatch(followUser(id))
+        setFollow("Delete Friend")
+      }
+    }
+
+
     return (
       <div>
+        {id !== user?._id &&
+          <button className='share__button' style={{ marginBottom: "30px" }} onClick={() => followHandler()}>{follow}</button>
+        }
         <h4 className='rightbar__titile-profile'>User Information</h4>
         <div className="rightbar__info-profile">
 
@@ -34,32 +77,40 @@ function Rightbar({ profile }) {
 
           <div className="rightbar__infoItem-profile">
             <span className="rightbar__infoKey-profile">From:</span>
-            <span className="rightbar__infoValue-profile"> Madrid </span>
+            <span className="rightbar__infoValue-profile"> {currUser?.from && "Madrid"} </span>
           </div>
 
           <div className="rightbar__infoItem-profile">
             <span className="rightbar__infoKey-profile">Relationship:</span>
-            <span  className="rightbar__infoValue-profile"> none </span>
+            <span className="rightbar__infoValue-profile">{currUser?.relationship && "none"} </span>
           </div>
-          <h4 className='rightbar__folowingsUserFriend'>User Friends</h4>
-<div className='rightbar__folowingsContainer'>
-  <div className="rightbar__folowings-profile">
+          <h4 className='rightbar__folowingsUserFriend'>{currUser?.userName}: Friends {currUser?.followers?.length}</h4>
+          <div className='rightbar__folowingsContainer'>
+
+            {friends?.map((e) =>
+              <NavLink key={e._id} to={`/profile/${e._id}`}>
+                <div className="rightbar__folowings-profile">
+
+                  <img className="rightbar__folowingsImage-profile" src={PF + e.profilePicture} />
+                  <h3>{e.userName}</h3>
+
+                </div>
+
+              </NavLink>
+
+            )}
+
+
+            {/* <div className="rightbar__folowings-profile">
 
             <img className="rightbar__folowingsImage-profile" src="https://cdn.wallpapersafari.com/26/17/DhbKur.jpg" />
             <h3>USer NAme</h3>
 
-          </div>
+          </div> */}
 
-          <div className="rightbar__folowings-profile">
-
-            <img className="rightbar__folowingsImage-profile" src="https://cdn.wallpapersafari.com/26/17/DhbKur.jpg" />
-            <h3>USer NAme</h3>
 
           </div>
 
-
-</div>
-        
 
         </div>
       </div>
@@ -69,7 +120,7 @@ function Rightbar({ profile }) {
   return (
     <div className='rightbar'>
       <div className="rightbar__container">
-        <ProfileRightbar />
+        {profile ? <ProfileRightbar /> : <HomeRightbAr />}
       </div>
     </div>)
 }
