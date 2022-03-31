@@ -113,5 +113,6 @@ font-size: 25px;
 }
 .post__commentText{
   cursor: pointer;
-  
+  display: flex;
+  align-items: center;
 }

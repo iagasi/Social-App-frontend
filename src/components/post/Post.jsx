@@ -12,6 +12,8 @@ import { useNavigate } from 'react-router-dom';
 import { $deletePost } from '../../http/post';
 import { deletePost } from '../../context/posts/PostsActions';
 import Comments from '../comments/Comments';
+import CloseIcon from '@mui/icons-material/Close';
+
 
 function Post({ post, friendPostOwner }) {
     const { user, dispatch } = AuthStateValue()
@@ -23,6 +25,8 @@ function Post({ post, friendPostOwner }) {
 
     ////////// Set User
     const [currPostUser, setCurrPostUser] = useState()
+
+    const [commentsLength,setCommentLength]=useState(0)
     useEffect(() => {
 
         setCurrPostUser(friendPostOwner?.find(friend => friend._id == post.userId))
@@ -87,21 +91,19 @@ setShow(val=>!val)
 
     const date = format(post.createdAt)
 
-
     return (
         <div className='post'>
             <div className='post__container'>
 
                 <section className='post__top'>
                     <div className="post__topLeft">
-                        <div style={{ cursor: 'pointer' }} onClick={() => postUserHandle()}> <img className='post__userImage' src={PF + currPostUser?.profilePicture} alt=" img" />
+                        <div style={{ cursor: 'pointer' }} onClick={() => postUserHandle()}> <img className='post__userImage' src={post.userId==user._id?PF + user.profilePicture:PF+friendPostOwner[0]?.profilePicture} alt=" img" />
                             <span className='post__userName'>{currPostUser?.userName}</span></div>
                         <span className='post__date'>"{date}" </span>
                     </div>
                     <div className="post__topRight" onClick={() => setDisplayModal(true)}>
 
                         <MoreVert />
-
                     </div>
                     {displayModal && <div className='post__topRight-Modal'><div className='post__topRight-ModalClose' onClick={() => setDisplayModal(false)}>X</div><button className='post__topRight-ModalButton' onClick={() => deletePostHandler()}>Delete Post</button></div>}
                 </section>
@@ -123,12 +125,12 @@ setShow(val=>!val)
                         <span className='post__likeCounter'>{like} Persons liked it </span>
                     </div>
                     <div className="post__bootomRight">
-                        <span className='post__commentText' onClick={()=>openComments()}>Coments <span></span>{comments?.length} </span>
+                        <span className='post__commentText' onClick={()=>openComments()}>{show&&<h3 style={{color:"red"}}>Close:</h3>}Coments: <span></span>{commentsLength} </span>
                     </div>
                 </section>
             </div>
             {
-             show&& <Comments postId={post._id} />
+             show&& <Comments postId={post._id}  setCommentsLength={(e)=>setCommentLength(e)} />
             }
             
         </div>

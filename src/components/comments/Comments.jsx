@@ -6,13 +6,24 @@ import { AuthStateValue, CommentsStateValue, PostStateValue } from '../../contex
 import { useRef } from 'react';
 import { setComment } from '../../context/posts/PostsActions';
 import { useState } from 'react';
-function Comments({ postId }) {
+import { useEffect } from 'react';
+function Comments({ postId,setCommentsLength }) {
   const PF=process.env.REACT_APP_PUBLIC_FOLDER
   const { comments, commentsDispatch } = CommentsStateValue()
+  const{posts}=PostStateValue()
   const { user } = AuthStateValue()
   const inputRef = useRef()
-console.log(user);
+const[postComments,setPostsComments]=useState()
 
+
+
+
+useEffect(()=>{
+setPostsComments((comments?.filter(comment=>comment.postId==postId)))
+setCommentsLength(comments.length)
+},[comments])
+
+console.log(postComments);
   const addComment = () => {
     console.log(inputRef.current.value)
     if (!inputRef.current.value) {
@@ -30,9 +41,9 @@ console.log(user);
     <div className="comments__main">
       <div className='comments__container'>
         <div className='comments__top'>
-          {comments && comments.map((comment) => <div key={comment._id} className='comments__comment'>
+          {postComments && postComments.map((comment) => <div key={comment._id} className='comments__comment'>
 
-            <img className="comments__image" src='https://cdn.pixabay.com/photo/2015/04/19/08/32/rose-729509__480.jpg'></img>
+            <img className="comments__image" src={user._id==comment.userId?PF+user.profilePicture:console.log("eee")}></img>
             <div className='comments__text'><p>{comment?.text}</p></div>
 
           </div>)

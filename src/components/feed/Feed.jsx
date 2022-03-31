@@ -11,17 +11,16 @@ function Feed() {
   const { user, setUser } = AuthStateValue()
   const { posts: Posts, postsDispatch } = PostStateValue()
   const [postOwner, setPostOwner] = useState([])
-  
+
   useEffect(async () => {
 
     const post = await $receveTimelinePost(user?._id)
     setPosts(post.postsArray?.sort((p1, p2) => new Date(p2.createdAt) - new Date(p1.createdAt)))
     postsDispatch(setAllposts(post.postsArray))
-
+    setPostOwner(post.postOwner)
 
 
   }, [])
-  console.log(Posts)
 
   return (
     <div className='feed'>

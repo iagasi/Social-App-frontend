@@ -1,0 +1,41 @@
+.messenger__message{
+    background-color: rgb(220, 220, 220);
+    width: fit-content;
+    padding: 15px;
+    border-radius: 20px;
+    flex-direction: row;
+    height: fit-content;
+    position: relative;
+    max-width: 200px;
+
+}
+.messenger__messageTime{
+    position: absolute;
+    margin-top: 35px;
+    
+}
+
+
+.meseenger__mesColor{
+    background-color: rgb(146, 176, 240);
+
+}
+.meseenger__mesPosition{
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.messenger__messageBody{
+    height: 120px;
+    display: flex;
+    padding-right: 30px;
+}
+
+.messenger__messageImg{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    position: absolute;
+    top:0;
+    left:-35px;
+}
